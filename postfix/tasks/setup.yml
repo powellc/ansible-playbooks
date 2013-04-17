@@ -1,0 +1,24 @@
+---     
+     - name: update apt repo
+       action: apt update-cache=yes
+
+     - name: install postfix
+       action: apt name=postfix state=installed
+       with_env:
+         DEBIAN_FRONTEND='noninteractive'
+
+     - name: write conf files
+       action: template src='postfix/templates/hostname.j2' dest='/etc/hostname'
+       action: template src='postfix/templates/mailname.j2' dest='/etc/mailname'
+       action: template src='postfix/templates/main.cf.j2' dest='/etc/postfix/main.cf'
+       action: template src='postfix/templates/mysql-domains.cf.j2' dest='/etc/postfix/mysql-domains.cf'
+       action: template src='postfix/templates/mysql-forwards.cf.j2' dest='/etc/postfix/mysql-forwards.cf'
+       action: template src='postfix/templates/mysql-email.cf.j2' dest='/etc/postfix/mysql-email.cf'
+       action: template src='postfix/templates/mysql-mailboxes.cf.j2' dest='/etc/postfix/mysql-mailboxes.cf'
+       notify:
+       - restart mysql 
+
+     - name: service postfix 
+       action: service name=postfix state=started 
+
+

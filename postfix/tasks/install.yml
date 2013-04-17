@@ -1,0 +1,6 @@
+---
+  - name: update apt repo
+    action: apt update-cache=yes
+
+  - name: Postfix | Installs postfix
+    action: apt pkg=postfix state=latest

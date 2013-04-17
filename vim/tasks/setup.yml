@@ -1,0 +1,9 @@
+---     
+     - name: update apt repo
+       action: apt update-cache=yes
+      
+     - name: install ViM 
+       action: apt name=vim state=installed
+
+     - name: write .vimrc
+       action: template src='vim/templates/dot.vimrc.j2' dest='~/.vimrc'

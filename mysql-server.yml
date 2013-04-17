@@ -1,6 +1,6 @@
 ---
-- hosts: mysql-servers
-  user: ubuntu 
+- hosts: web-servers
+  user: vagrant
   sudo: True
 
   vars:
@@ -8,7 +8,7 @@
      key_buffer: "16M"
      
   tasks:
-     - include: tasks/setup.yml
+     - include: mysql/tasks/setup.yml
 
   handlers:
-     - include: handlers/handler.yml     
+     - include: mysql/handlers/handler.yml     

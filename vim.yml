@@ -1,0 +1,7 @@
+---
+- hosts: web-servers
+  user: vagrant
+  sudo: True
+
+  tasks:
+     - include: vim/tasks/setup.yml

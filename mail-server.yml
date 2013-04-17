@@ -1,0 +1,15 @@
+---
+- hosts: web-servers
+  user: vagrant
+  sudo: True
+
+  vars:
+     mailserver_name: "mail.onec.me"
+     maildb_pass: "jioasd89jp23ijpasfdkj;"
+     maildb_user: "mailadmin"
+
+  tasks:
+     - include: postfix/tasks/setup.yml
+
+  handlers:
+     - include: postfix/handlers/handler.yml     

@@ -1,0 +1,6 @@
+---
+     - name: restart postfix 
+       action: service name=postfix state=restarted
+
+     - name: restart mysql 
+       action: service name=mysql state=restarted
