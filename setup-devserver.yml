@@ -1,6 +1,6 @@
 ---
 ### A dev server is a all-in one nginx+php+myql server
-- hosts: web-server
+- hosts: dev-servers
   user: vagrant
   sudo: True
   vars: 
